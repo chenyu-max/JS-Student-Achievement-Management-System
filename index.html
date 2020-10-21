@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学生管理系统</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<!-- 头部信息 -->
+<div class="header">
+    <div class="log">
+        <span>班级管理系统</span>
+    </div>
+
+</div>
+
+<!-- 左边菜单-->
+<div class="left-menu">
+    <dl id="student-menu">
+        <dt>学生管理</dt>
+        <dd class="active" data-id="student-list">学生列表</dd>
+        <dd data-id="student-add">新增学生</dd>
+    </dl>
+
+    <dl id="class-menu" class="show">
+        <dt>班级管理</dt>
+        <dd class="active" data-id="class-list">班级列表</dd>
+        <dd data-id="class-add">新增班级</dd>
+    </dl>
+
+    <dl id="course-menu">
+        <dt>课程成绩管理</dt>
+        <dd class="active" data-id="course-list">课程成绩列表</dd>
+        <dd data-id="course-add">新增课程及成绩</dd>
+    </dl>
+</div>
+
+
+<!-- 右侧内容  之 学生页面-->
+<div class="right-content" data-view="students">
+
+    <!--  学生信息列表展示  -->
+    <div id="student-list" class="student-list content show-content">
+        <table>
+            <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>手机号</th>
+                <th>编辑</th>
+                <th>查看成绩</th>
+                <th>删除</th>
+            </tr>
+            </thead>
+
+            <tbody id="student-tbody">
+            <tr>
+                <td>2019339964013</td>
+                <td>陈榆</td>
+                <td>男</td>
+                <td>19</td>
+                <td>13586994166</td>
+                <td>
+                    <button class="btn edit">编辑</button>
+                </td>
+                <td>
+                    <button class="btn score">查看成绩</button>
+                </td>
+                <td>
+                    <button class="btn remove">删除</button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+        <div class="dialog" id="student-edit-dialog">
+            <div class="dialog-content">
+                <h3>编辑信息</h3>
+                <form action="" id="student-edit-form">
+                    <div>
+                        <label for="edit-number">学号</label>
+                        <input type="text" id="edit-number" name="studentId" readonly>
+                    </div>
+                    <div>
+                        <label for="edit-name">姓名</label>
+                        <input type="text" id="edit-name" name="studentName">
+                    </div>
+                    <div>
+                        <label>性别</label>
+                        <input type="radio" name="studentSex" id="edit-male" value="0" checked="checked">
+                        <label class="sex" for="edit-male">男</label>
+                        <input type="radio" name="studentSex" id="edit-female" value="1">
+                        <label class="sex" for="edit-female">女</label>
+                    </div>
+
+                    <div>
+                        <label for="edit-birth">出生年</label>
+                        <input type="text" id="edit-birth" name="studentAge">
+                    </div>
+                    <div>
+                        <label for="edit-phone">手机号</label>
+                        <input type="text" id="edit-phone" name="studentPhone">
+                    </div>
+
+                    <div>
+                        <label></label>
+                        <input type="submit" class="btn" id="student-edit-form-btn">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--  学生信息添加  -->
+    <div id="student-add" class="student-add content">
+        <form action="" id="student-add-form">
+            <div>
+                <label for="add-number">学号</label>
+                <input type="text" id="add-number" name="sId">
+            </div>
+            <div>
+                <label for="add-name">姓名</label>
+                <input type="text" id="add-name" name="name">
+            </div>
+            <div>
+                <label>性别</label>
+                <input type="radio" name="sex" id="add-male" value="0" checked="checked">
+                <label class="sex" for="add-male">男</label>
+                <input type="radio" name="sex" id="add-female" value="1">
+                <label class="sex" for="add-female">女</label>
+            </div>
+
+            <div>
+                <label for="add-age">年龄</label>
+                <input type="text" id="add-age" name="age">
+            </div>
+            <div>
+                <label for="add-phone">手机号</label>
+                <input type="text" id="add-phone" name="phone">
+            </div>
+
+            <div>
+                <label></label>
+                <input type="submit" class="btn" id="addStudent-form-btn">
+                <input type="reset" class="btn">
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 右侧内容 之 班级页面 -->
+<div class="right-content  show" data-view="class">
+    <!--  班级信息展示  -->
+    <div id="class-list" class="class-list content show-content">
+        <table>
+            <thead>
+            <tr>
+                <td>班级名称</td>
+                <td>班级人数上限</td>
+                <td>当前学生人数</td>
+                <td>编辑</td>
+                <td>删除</td>
+            </tr>
+            </thead>
+            <tbody id="class-tbody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <!--  班级信息添加  -->
+    <div id="class-add" class="class-add content">
+        <form action="" id="class-add-form">
+            <div>
+                <label for="classId">班级名称</label>
+                <input type="text" id="classId" name="classId">
+            </div>
+
+            <div>
+                <label for="studentsNum">班级人数</label>
+                <input type="text" id="studentsNum" name="studentsNum">
+            </div>
+
+            <div>
+                <label></label>
+                <input type="submit" class="btn" id="addClass-form-btn">
+                <input type="reset" class="btn">
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 右侧视图 之 成绩页面 -->
+<div class="right-content" data-view="course">
+    <!--  成绩信息展示  -->
+    <div id="course-list" class="course-list content show-content">
+        <table>
+            <thead>
+            <tr>
+                <td>课程名称</td>
+                <td>课程分数</td>
+                <td>修改成绩</td>
+                <td>删除课程</td>
+            </tr>
+            </thead>
+            <tbody id="course-tbody">
+
+            </tbody>
+        </table>
+
+        <div class="dialog" id="course-edit-dialog">
+            <div class="dialog-content">
+                <h3>编辑信息</h3>
+                <form action="" id="course-edit-form">
+                    <div>
+                        <label for="edit-courseName">课程</label>
+                        <input type="text" id="edit-courseName" name="courseName" readonly>
+                    </div>
+                    <div>
+                        <label for="edit-courseGrades">成绩</label>
+                        <input type="text" id="edit-courseGrades" name="courseGrades">
+                    </div>
+                    <div>
+                        <label></label>
+                        <input type="submit" class="btn" id="course-edit-form-btn">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--  课程信息添加  -->
+    <div id="course-add" class="course-add content">
+        <form action="" id="course-add-form">
+            <div>
+                <label for="courseName">课程名称</label>
+                <input type="text" id="courseName" name="courseName">
+            </div>
+
+            <div>
+                <label for="courseGrades">课程成绩</label>
+                <input type="text" id="courseGrades" name="courseGrades">
+            </div>
+
+            <div>
+                <label></label>
+                <input type="submit" class="btn" id="addCourse-form-btn">
+                <input type="reset" class="btn">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="JS/utils.js"></script>
+<script src="JS/Student.js"></script>
+<script src="JS/ClassStructure.js"></script>
+<script src="JS/index.js"></script>
+</body>
+</html>
