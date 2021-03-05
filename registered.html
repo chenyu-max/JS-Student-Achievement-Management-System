@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="./CSS/registered.css">
+    <link rel="stylesheet" href="./bootstrap-4.5.0-dist/css/bootstrap.css">
+</head>
+
+<body>
+    <div class="page-container">
+        <h1>注册(registered)</h1>
+        <form action="">
+            <input type="text" name="registered_username" class="registered_username" placeholder="请输入您的用户名！">
+            <input type="password" name="registered_password" class="registered_password" placeholder="请输入您的用户密码！">
+            <input type="password" name="registered_confirm_password" class="registered_confirm_password" placeholder="请确认您的用户密码！">
+            <input type="Captcha" class="registered_Captcha" name="registered_Captcha" placeholder="请输入验证码！">
+            <input type="button" id="registered_code" onclick="createCode()" style="height:40px;width:120px" />
+            <button type="button" class="registered_submit">注册</button>
+        </form>
+
+    </div>
+
+
+    <!-- 背景轮播图 -->
+    <div id="registered_carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./img/1.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./img/2.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./img/3.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+
+    <script src="./JS/utils.js"></script>
+    <script src="./JS/registered.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="./bootstrap-4.5.0-dist/js/bootstrap.bundle.js"></script>
+    <script src="./bootstrap-4.5.0-dist/js/bootstrap.js"></script>
+</body>
+
+</html>

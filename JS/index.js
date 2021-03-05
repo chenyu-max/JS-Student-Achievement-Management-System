@@ -1,12 +1,12 @@
 // ClassList  班级链表类
-var classList = {
+let classList = {
     allClass: getLocal('allClass') ? getLocal('allClass') : [],
-    insertClass: function (tempObj) {
+    insertClass: function(tempObj) {
         // insertFlag 表示 能否添加这个班级
         var insertFlag = true;
         var classObj = new ClassStructure(tempObj.classId, tempObj.studentsNum, tempObj.nowStudentsNum, tempObj.studentsList, tempObj.classIndex);
 
-        this.allClass.forEach(function (value) {
+        this.allClass.forEach(function(value) {
             if (value['classId'] == classObj['classId']) {
                 alert(classObj['classId'] + ' 这个班级已经存在，添加失败');
                 insertFlag = false;
@@ -21,7 +21,7 @@ var classList = {
             return false;
         }
     },
-    delClass: function (calssObj) {
+    delClass: function(calssObj) {
         // 弹窗判断是否删除
         var isDel = confirm('确认删除' + calssObj.classId + '这个班级吗？');
         if (isDel) {
@@ -40,34 +40,54 @@ var classList = {
 };
 
 // classNum 为 班级数量
-var classNum = getLocal('classNum') ? Number(getLocal('classNum')) : 0;
+let classNum = getLocal('classNum') ? Number(getLocal('classNum')) : 0;
 
 // 事件绑定函数
 function bindEvent() {
-    var class_index;
-    var student_index;
-    var course_index;
+    let class_index;
+    let student_index;
+    let course_index;
 
-    var student_list_content = document.getElementsByClassName('right-content')[0];
-    var class_list_content = document.getElementsByClassName('right-content')[1];
-    var course_list_content = document.getElementsByClassName('right-content')[2];
+    let login_flag = false;
+
+    const login = document.getElementsByClassName('login')[0];
+    const registered = document.getElementsByClassName('registered')[0];
+
+    login.onclick = () => {
+        if (login_flag = true) {
+            login.innerHTML = `<a href="./login.html">登录</a>`;
+            registered.innerHTML = `<a href="./registered.html">注册</a>`;
+            login_flag = false;
+        }
+    }
+
+    if (getLocal('nowUser')) {
+        login_flag = true;
+        login.innerHTML = '退出登录';
+        registered.innerHTML = getLocal('nowUser');
+    }
+
+
+    const student_list_content = document.getElementsByClassName('right-content')[0];
+    const class_list_content = document.getElementsByClassName('right-content')[1];
+    const course_list_content = document.getElementsByClassName('right-content')[2];
 
     // 班级菜单列表点击按钮操作
-    var classMenuDl = document.querySelector('.left-menu > #class-menu ');
+    const classMenuDl = document.querySelector('.left-menu > #class-menu ');
     changeLeftMenu(classMenuDl);
 
     // 学生菜单列表点击按钮操作
-    var studentMenuDl = document.querySelector('.left-menu > #student-menu');
+    const studentMenuDl = document.querySelector('.left-menu > #student-menu');
     changeLeftMenu(studentMenuDl);
 
     // 成绩菜单列表点击按钮操作
-    var courseMenuDl = document.querySelector('.left-menu > #course-menu');
+    const courseMenuDl = document.querySelector('.left-menu > #course-menu');
     changeLeftMenu(courseMenuDl);
 
     // 班级信息 添加按钮 点击操作
-    var classAddBtn = document.getElementById('addClass-form-btn');
-    var classAddForm = document.getElementById('class-add-form');
-    classAddBtn.onclick = function (e) {
+    const classAddBtn = document.getElementById('addClass-form-btn');
+    const classAddForm = document.getElementById('class-add-form');
+    classAddBtn.onclick = function(e) {
         // 取消点击提交按钮的默认事件
         e.preventDefault();
         // 获取提交表单的数据
@@ -81,12 +101,12 @@ function bindEvent() {
             return;
         }
         if (classList.insertClass({
-            classId: tempObj.classId,
-            studentsNum: Number(tempObj.studentsNum),
-            nowStudentsNum: 0,
-            studentsList: [],
-            classIndex: classNum
-        })) {
+                classId: tempObj.classId,
+                studentsNum: Number(tempObj.studentsNum),
+                nowStudentsNum: 0,
+                studentsList: [],
+                classIndex: classNum
+            })) {
             // 更新班级数目
             classNum++;
             setLocal('classNum', classNum);
@@ -99,8 +119,8 @@ function bindEvent() {
     }
 
     //  点击 班级管理 视图页面 的 按钮 (编辑 + 删除)
-    var classTableBody = document.getElementById('class-tbody');
-    classTableBody.onclick = function (e) {
+    const classTableBody = document.getElementById('class-tbody');
+    classTableBody.onclick = function(e) {
         if (!e.target.classList.contains('btn')) {
             return false;
         }
@@ -123,9 +143,9 @@ function bindEvent() {
 
 
     // 学生表单 提交按钮 点击事件
-    var studentAddForm = document.getElementById('student-add-form');
-    var addStudentFormBtn = document.getElementById('addStudent-form-btn');
-    addStudentFormBtn.onclick = function (e) {
+    const studentAddForm = document.getElementById('student-add-form');
+    const addStudentFormBtn = document.getElementById('addStudent-form-btn');
+    addStudentFormBtn.onclick = function(e) {
         e.preventDefault();
         var tempObj = getStudentFormData(studentAddForm);
         if (isValidStudentForm(tempObj)) {
@@ -140,11 +160,11 @@ function bindEvent() {
         }
     }
 
-    var student_edit_dialog = document.getElementById('student-edit-dialog');
-    var course_edit_dialog = document.getElementById('course-edit-dialog');
+    const student_edit_dialog = document.getElementById('student-edit-dialog');
+    const course_edit_dialog = document.getElementById('course-edit-dialog');
     // 学生表单 按钮点击事件
     var studentTableBody = document.getElementById('student-tbody');
-    studentTableBody.onclick = function (e) {
+    studentTableBody.onclick = function(e) {
         if (!e.target.classList.contains('btn')) {
             return false;
         }
@@ -176,7 +196,7 @@ function bindEvent() {
     }
 
     // 当编辑区域展示出来的时候，我们点击编辑区域以外的内容，编辑区域消失 以及 编辑弹窗的点击按钮事件
-    student_edit_dialog.onclick = function (e) {
+    student_edit_dialog.onclick = function(e) {
         if (e.target === this) {
             student_edit_dialog.classList.remove('show');
             return;
@@ -200,7 +220,7 @@ function bindEvent() {
     // 课程表单提交按钮 点击事件
     var addCourseFormBtn = document.getElementById('addCourse-form-btn');
     var courseAddForm = document.getElementById('course-add-form');
-    addCourseFormBtn.onclick = function (e) {
+    addCourseFormBtn.onclick = function(e) {
         // 阻止点击 submit 按钮 页面刷新
         e.preventDefault();
         if (!courseAddForm['courseGrades']) {
@@ -234,7 +254,7 @@ function bindEvent() {
 
     // 成绩 列表 按钮点击事件
     var courseTbody = document.getElementById('course-tbody');
-    courseTbody.onclick = function (e) {
+    courseTbody.onclick = function(e) {
         if (!e.target.classList.contains('btn')) {
             return;
         }
@@ -257,7 +277,7 @@ function bindEvent() {
     }
 
     // 成绩 编辑表单 点击事件
-    course_edit_dialog.onclick = function (e) {
+    course_edit_dialog.onclick = function(e) {
 
         if (e.target === this) {
             course_edit_dialog.classList.remove('show');
@@ -287,7 +307,7 @@ function bindEvent() {
 
     //  点击 header 上 的 log 返回  上一级
     var log = document.getElementsByClassName('log')[0].getElementsByTagName('span')[0];
-    log.onclick = function () {
+    log.onclick = function() {
         var data_id = this.dataset.id;
         if (!data_id) {
             return;
@@ -362,7 +382,7 @@ function switchPagesByAddBtn(target, menuDom, addForm) {
 
 // 改变左侧菜单样式 以及 右侧对应内容相应的样式
 function changeLeftMenu(dom) {
-    dom.onclick = function (e) {
+    dom.onclick = function(e) {
         if (e.target.tagName === 'DD') {
             var siblings = getSiblings(e.target);
             changeStyle(siblings, 'active', e.target);

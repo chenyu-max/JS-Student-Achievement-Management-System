@@ -1,0 +1,111 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #f8f8f8;
+    text-align: center;
+    color: #fff;
+    font-family: Microsoft YaHei, Segoe UI, Tahoma, Arial, Verdana, sans-serif;
+}
+
+.page-container {
+    width: 350px;
+    height: auto;
+    margin: 120px auto 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+    text-shadow: 0 1px 4px rgb(0 0 0 / 20%);
+    color: #fff;
+}
+
+form {
+    position: relative;
+    width: 350px;
+    margin: 15px auto 0 auto;
+    text-align: center;
+}
+
+form,
+input,
+button {
+    font-family: Microsoft YaHei, Segoe UI, Tahoma, Arial, Verdana, sans-serif;
+    text-decoration: none;
+    width: 100%;
+    transition: all .3s;
+}
+
+form input {
+    outline: none;
+    margin-top: 15px;
+    padding: 0 15px;
+    background: rgba(45, 45, 45, .15);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    font-size: 14px;
+    color: #fff;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+    height: 42px;
+}
+
+form input.registered_Captcha {
+    width: 130px;
+    float: left;
+}
+
+form .registered_submit {
+    letter-spacing: 15px;
+    font-size: 24px;
+    height: 44px;
+    margin-top: 25px;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #ff730e;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+    background: #ef4300;
+}
+
+
+/* 以下为 修改 palceholder 的颜色 */
+
+input::-webkit-input-placeholder {
+    color: #fff;
+}
+
+input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #fff;
+}
+
+input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #fff;
+}
+
+input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #fff;
+}
+
+#registered_carousel {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    z-index: -999;
+    height: 100%;
+    width: 100%;
+}
+
+#registered_carousel img {
+    height: 700px;
+}

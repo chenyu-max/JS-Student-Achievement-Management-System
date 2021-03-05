@@ -31,7 +31,6 @@ body::after {
     float: left;
 }
 
-
 .right-content {
     float: left;
     width: calc(100% - 200px);
@@ -46,10 +45,38 @@ body::after {
     padding-left: 20px;
     color: #b3bcc5;
     font-size: 14px;
+    float: left;
+}
+
+.login {
+    cursor: pointer;
+}
+
+.header .login,
+.header .registered {
+    float: right;
+    padding-right: 40px;
+    font-size: 16px;
+    color: #b3bcc5;
+    font-weight: bolder;
+}
+
+.header a:link,
+.header a:visited,
+.header a:hover,
+.header a:active {
+    color: #b3bcc5;
+    text-decoration: none;
 }
 
 .header .log span[data-id] {
     cursor: pointer;
+}
+
+.header::after {
+    content: "";
+    display: block;
+    clear: both;
 }
 
 .left-menu dl {
@@ -109,14 +136,12 @@ form {
     width: 400px;
     margin: 20px auto;
     height: 150px;
-
     /* margin 想要居中，就要让父元素有宽度才行 */
 }
 
 form div {
     margin: 10px 0;
 }
-
 
 form div label:not(.sex) {
     width: 80px;
@@ -162,7 +187,6 @@ form .btn {
     background-color: #d9534f;
 }
 
-
 .content.student-list table {
     width: 100%;
     text-align: center;
@@ -199,8 +223,6 @@ form .btn {
 .student-list table .btn.score {
     background-color: #4f9dd9;
 }
-
-
 
 .content.course-list table {
     width: 100%;
